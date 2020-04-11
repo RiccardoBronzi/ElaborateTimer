@@ -8,7 +8,8 @@ DateTime::DateTime()
 
 QString DateTime::changeFormat()
 {
-  switch (buttonCountDateTime%3){
+  switch (buttonCountDateTime%3)
+  {
       case 1:
          return today.toString("dd.MM.yyyy hh:mm:ss");
       case 2:

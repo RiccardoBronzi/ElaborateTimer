@@ -4,13 +4,14 @@
 #include<QTime>
 #include<QString>
 
+
 class Timer : public QTime
 {
 public:
     Timer();
     QString staticTime();
     QString updateTimer();
-    int updateButtonCountTimer();
+    bool ring();
     void setTimer(int s);
     void resetTimer();
 private:

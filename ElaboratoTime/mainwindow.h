@@ -3,8 +3,10 @@
 
 #include <QMainWindow>
 #include <QTimer>
+#include <QMessageBox>
 #include "datetime.h"
 #include "timer.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -29,23 +31,14 @@ public:
 
 private slots:
     void on_changeFormat_clicked();
-
     void on_start_clicked();
-
     void on_stop_clicked();
-
     void on_reset_clicked();
-
     void on_hourPlus_clicked();
-
     void on_hourMinus_clicked();
-
     void on_minutePlus_clicked();
-
     void on_minuteMinus_clicked();
-
     void on_secondPlus_clicked();
-
     void on_secondMinus_clicked();
 
 private:

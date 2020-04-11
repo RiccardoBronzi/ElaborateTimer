@@ -12,11 +12,18 @@ QString Timer::staticTime()
 
 QString Timer::updateTimer()
 {
-   if( time.hour()!=0 || time.minute()!=0 || time.second()!=0)
+   if(time.hour()!=0 || time.minute()!=0 || time.second()!=0)
       time=time.addSecs(-1);
-   return time.toString();
+   return staticTime();
 }
 
+bool Timer::ring()
+{
+    if(time.hour()==0 && time.minute()==0 && time.second()==0)
+        return true;
+    else
+        return false;
+}
 
 void Timer::setTimer(int s)
 {
@@ -27,4 +34,5 @@ void Timer::resetTimer()
 {
     time.setHMS(0,0,0,0);
 }
+
 
