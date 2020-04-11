@@ -2,7 +2,7 @@
 
 DateTime::DateTime()
 {
-  buttonCountDateTime=3;
+  buttonCountDateTime=1;
   today=currentDateTime();
 }
 

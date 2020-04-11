@@ -4,7 +4,7 @@
 #include <QString>
 
 
-class DateTime : public QDateTime{
+class DateTime : public QDateTime {
 public:
     DateTime();
     QString changeFormat();
