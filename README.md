@@ -1,1 +1,1 @@
-Elaborato rapprezentazione tempo
+Elaborato rappresentazione tempo
