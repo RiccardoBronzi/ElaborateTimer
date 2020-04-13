@@ -78,24 +78,28 @@ void MainWindow::on_reset_clicked()
 
 void MainWindow::on_hourPlus_clicked()
 {
+    if(!timerTimer->isActive() && timer->setValid("h+"))
     timer->setTimer(3600);
     showStaticTimer();
 }
 
 void MainWindow::on_hourMinus_clicked()
 {
-    timer->setTimer(-3600);
+    if(!timerTimer->isActive() && timer->setValid("h-"))
+     timer->setTimer(-3600);
     showStaticTimer();
 }
 
 void MainWindow::on_minutePlus_clicked()
 {
+    if(!timerTimer->isActive() && timer->setValid("m+"))
     timer->setTimer(60);
     showStaticTimer();
 }
 
 void MainWindow::on_minuteMinus_clicked()
 {
+    if(!timerTimer->isActive() && timer->setValid("m-"))
     timer->setTimer(-60);
     showStaticTimer();
 
@@ -103,12 +107,14 @@ void MainWindow::on_minuteMinus_clicked()
 
 void MainWindow::on_secondPlus_clicked()
 {
+    if(!timerTimer->isActive() && timer->setValid("s+"))
     timer->setTimer(1);
     showStaticTimer();
 }
 
 void MainWindow::on_secondMinus_clicked()
 {
+    if(!timerTimer->isActive() && timer->setValid("s-"))
     timer->setTimer(-1);
     showStaticTimer();
 }

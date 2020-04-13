@@ -25,6 +25,30 @@ bool Timer::ring()
         return false;
 }
 
+bool Timer::setValid(QString setupType)
+{
+    if(setupType=="m+")
+        if(time.minute()==59)
+            return false;
+    if(setupType=="m-")
+        if(time.minute()==0)
+            return false;
+    if(setupType=="s+")
+        if(time.second()==59)
+            return false;
+    if(setupType=="s-")
+        if(time.minute()==0)
+            return false;
+    if(setupType=="h+")
+        if(time.hour()==23)
+            return false;
+    if(setupType=="h-")
+        if(time.hour()==0)
+            return false;
+    return true;
+
+}
+
 void Timer::setTimer(int s)
 {
     time = time.addSecs(s);

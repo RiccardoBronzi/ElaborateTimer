@@ -12,6 +12,7 @@ public:
     QString staticTime();
     QString updateTimer();
     bool ring();
+    bool setValid(QString setupType);
     void setTimer(int s);
     void resetTimer();
 private:
