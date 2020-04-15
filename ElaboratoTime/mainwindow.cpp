@@ -40,7 +40,7 @@ void MainWindow::showTimer()
         QMessageBox::about(this,"WARNING", "   DRIN DRIN     ");
         timerTimer->stop();
     }
-    ui->timer->setText(timer->updateTimer());
+    ui->timer->setText(timer->update());
 }
 
 void MainWindow::showStaticTimer()
@@ -55,7 +55,8 @@ void MainWindow::on_changeFormat_clicked()
 
 void MainWindow::on_start_clicked()
 {
-    timerTimer->start(1000);
+    if(!timerTimer->isActive())
+       timerTimer->start(1000);
 
 }
 
@@ -67,7 +68,7 @@ void MainWindow::on_stop_clicked()
 
 void MainWindow::on_reset_clicked()
 {
-    timer->resetTimer();
+    timer->reset();
     timerTimer->stop();
     showStaticTimer();
 }
@@ -75,28 +76,28 @@ void MainWindow::on_reset_clicked()
 void MainWindow::on_hourPlus_clicked()
 {
     if(!timerTimer->isActive() && timer->setValid("h+"))
-       timer->setTimer(3600);
+       timer->set(3600);
     showStaticTimer();
 }
 
 void MainWindow::on_hourMinus_clicked()
 {
     if(!timerTimer->isActive() && timer->setValid("h-"))
-       timer->setTimer(-3600);
+       timer->set(-3600);
     showStaticTimer();
 }
 
 void MainWindow::on_minutePlus_clicked()
 {
     if(!timerTimer->isActive() && timer->setValid("m+"))
-       timer->setTimer(60);
+       timer->set(60);
     showStaticTimer();
 }
 
 void MainWindow::on_minuteMinus_clicked()
 {
     if(!timerTimer->isActive() && timer->setValid("m-"))
-       timer->setTimer(-60);
+       timer->set(-60);
     showStaticTimer();
 
 }
@@ -104,13 +105,13 @@ void MainWindow::on_minuteMinus_clicked()
 void MainWindow::on_secondPlus_clicked()
 {
     if(!timerTimer->isActive() && timer->setValid("s+"))
-       timer->setTimer(1);
+       timer->set(1);
     showStaticTimer();
 }
 
 void MainWindow::on_secondMinus_clicked()
 {
     if(!timerTimer->isActive() && timer->setValid("s-"))
-      timer->setTimer(-1);
+      timer->set(-1);
     showStaticTimer();
 }

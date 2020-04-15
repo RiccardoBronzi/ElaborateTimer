@@ -10,7 +10,7 @@ QString Timer::staticTime()
     return time.toString();
 }
 
-QString Timer::updateTimer()
+QString Timer::update()
 {
    if(time.hour()!=0 || time.minute()!=0 || time.second()!=0)
       time=time.addSecs(-1);
@@ -49,12 +49,12 @@ bool Timer::setValid(QString setupType)
 
 }
 
-void Timer::setTimer(int s)
+void Timer::set(int s)
 {
     time = time.addSecs(s);
 }
 
-void Timer::resetTimer()
+void Timer::reset()
 {
     time.setHMS(0,0,0,0);
 }

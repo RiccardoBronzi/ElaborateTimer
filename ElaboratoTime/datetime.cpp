@@ -14,7 +14,7 @@ QString DateTime::changeFormat()
          return today.toString("dd.MM.yyyy hh:mm:ss");
       case 2:
          return today.toString("MM.dd.yyyy hh:mm:ss");
-      case 0:
+      default:
          return today.toString("dddd d MMMM yyyy hh:mm:ss");
   }
 }

@@ -10,11 +10,11 @@ class Timer : public QTime
 public:
     Timer();
     QString staticTime();
-    QString updateTimer();
+    QString update();
     bool ring();
     bool setValid(QString setupType);
-    void setTimer(int s);
-    void resetTimer();
+    void set(int s);
+    void reset();
 private:
     QTime time;
 };
