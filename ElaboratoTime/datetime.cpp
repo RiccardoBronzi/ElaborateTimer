@@ -1,8 +1,8 @@
 #include "datetime.h"
 
-DateTime::DateTime():QDateTime(currentDateTime())
+DateTime::DateTime()
 {
-  today=currentDateTime();
+  today=today.currentDateTime();
   buttonCountDateTime=1;
 }
 
@@ -11,18 +11,17 @@ QString DateTime::changeFormat()
   switch (buttonCountDateTime%3)
   {
       case 1:
-         return this->toString("dd.MM.yyyy hh:mm:ss");
+         return today.toString("dd.MM.yyyy hh:mm:ss");
       case 2:
-         return this->toString("MM.dd.yyyy hh:mm:ss");
+         return today.toString("MM.dd.yyyy hh:mm:ss");
       default:
-         return this->toString("dddd d MMMM yyyy hh:mm:ss");
+         return today.toString("dddd d MMMM yyyy hh:mm:ss");
   }
 }
 
 QString DateTime::updateDateTime()
 {
-    today = currentDateTime();
-    this->swap(today);
+    today=today.currentDateTime();
     return changeFormat();
 }
 

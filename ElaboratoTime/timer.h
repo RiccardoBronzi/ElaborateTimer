@@ -8,7 +8,6 @@
 class Timer
 {
 public:
-
     Timer();
     QString staticTime();
     QString update();
