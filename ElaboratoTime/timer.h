@@ -5,9 +5,10 @@
 #include<QString>
 
 
-class Timer : public QTime
+class Timer
 {
 public:
+
     Timer();
     QString staticTime();
     QString update();
