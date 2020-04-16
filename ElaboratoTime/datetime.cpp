@@ -11,11 +11,11 @@ QString DateTime::changeFormat()
   switch (buttonCountDateTime%3)
   {
       case 1:
-         return toString("dd.MM.yyyy hh:mm:ss");
+         return this->toString("dd.MM.yyyy hh:mm:ss");
       case 2:
-         return toString("MM.dd.yyyy hh:mm:ss");
+         return this->toString("MM.dd.yyyy hh:mm:ss");
       default:
-         return toString("dddd d MMMM yyyy hh:mm:ss");
+         return this->toString("dddd d MMMM yyyy hh:mm:ss");
   }
 }
 
