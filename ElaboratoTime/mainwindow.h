@@ -17,18 +17,11 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
-    DateTime * data;
-    Timer * timer;
-    QTimer * timerDateTime;
-    QTimer * timerTimer;
     void showTime();
     void showTimer();
-    void showStaticTimer();
-
+    void showTimerText();
 private slots:
     void on_changeFormat_clicked();
     void on_start_clicked();
@@ -40,8 +33,11 @@ private slots:
     void on_minuteMinus_clicked();
     void on_secondPlus_clicked();
     void on_secondMinus_clicked();
-
 private:
     Ui::MainWindow *ui;
+    DateTime data;
+    Timer timer;
+    QTimer *timerDateTime;
+    QTimer *timerTimer;
 };
 #endif // MAINWINDOW_H

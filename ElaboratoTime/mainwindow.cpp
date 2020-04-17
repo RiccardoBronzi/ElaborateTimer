@@ -7,22 +7,15 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    data = new DateTime;
-    timer = new Timer;
     timerDateTime = new QTimer(this);
     timerTimer = new QTimer(this);
-
     connect(timerTimer,&QTimer::timeout, this, &MainWindow::showTimer);
     connect(timerDateTime,&QTimer::timeout, this, &MainWindow::showTime);
     timerDateTime->start(1000);
-
 }
 
 MainWindow::~MainWindow()
 {
-    delete timer;
-    delete data;
     delete timerDateTime;
     delete timerTimer;
     delete ui;
@@ -30,88 +23,86 @@ MainWindow::~MainWindow()
 
 void MainWindow::showTime()
 {
-    ui->dateTime->setText(data->updateDateTime());
+    ui->dateTime->setText(data.updateDateTime());
 }
 
 void MainWindow::showTimer()
 {
-    if(timer->ring())
+    if(timer.isFinished())
     {
         QMessageBox::about(this,"WARNING", "   DRIN DRIN     ");
         timerTimer->stop();
     }
-    ui->timer->setText(timer->update());
+    ui->timer->setText(timer.update());
 }
 
-void MainWindow::showStaticTimer()
+void MainWindow::showTimerText()
 {
-    ui->timer->setText(timer->staticTime());
+    ui->timer->setText(timer.toString());
 }
 
 void MainWindow::on_changeFormat_clicked()
 {
-    data->updateButtonCountDateTime();
+    data.updateButtonCountDateTime();
 }
 
 void MainWindow::on_start_clicked()
 {
     if(!timerTimer->isActive())
        timerTimer->start(1000);
-
 }
 
 void MainWindow::on_stop_clicked()
 {
     timerTimer->stop();
-    showStaticTimer();
+    showTimerText();
 }
 
 void MainWindow::on_reset_clicked()
 {
-    timer->reset();
+    timer.reset();
     timerTimer->stop();
-    showStaticTimer();
+    showTimerText();
 }
 
 void MainWindow::on_hourPlus_clicked()
 {
-    if(!timerTimer->isActive() && timer->setValid("h+"))
-       timer->set(3600);
-    showStaticTimer();
+    if(!timerTimer->isActive() && timer.setValid("h+"))
+       timer.addSeconds(3600);
+    showTimerText();
 }
 
 void MainWindow::on_hourMinus_clicked()
 {
-    if(!timerTimer->isActive() && timer->setValid("h-"))
-       timer->set(-3600);
-    showStaticTimer();
+    if(!timerTimer->isActive() && timer.setValid("h-"))
+       timer.addSeconds(-3600);
+    showTimerText();
 }
 
 void MainWindow::on_minutePlus_clicked()
 {
-    if(!timerTimer->isActive() && timer->setValid("m+"))
-       timer->set(60);
-    showStaticTimer();
+    if(!timerTimer->isActive() && timer.setValid("m+"))
+       timer.addSeconds(60);
+    showTimerText();
 }
 
 void MainWindow::on_minuteMinus_clicked()
 {
-    if(!timerTimer->isActive() && timer->setValid("m-"))
-       timer->set(-60);
-    showStaticTimer();
-
+    if(!timerTimer->isActive() && timer.setValid("m-"))
+       timer.addSeconds(-60);
+    showTimerText();
 }
 
 void MainWindow::on_secondPlus_clicked()
 {
-    if(!timerTimer->isActive() && timer->setValid("s+"))
-       timer->set(1);
-    showStaticTimer();
+    if(!timerTimer->isActive() && timer.setValid("s+"))
+       timer.addSeconds(1);
+    showTimerText();
 }
 
 void MainWindow::on_secondMinus_clicked()
 {
-    if(!timerTimer->isActive() && timer->setValid("s-"))
-      timer->set(-1);
-    showStaticTimer();
+    if(!timerTimer->isActive() && timer.setValid("s-"))
+       timer.addSeconds(-1);
+    showTimerText();
 }
